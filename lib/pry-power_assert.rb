@@ -3,10 +3,7 @@ require "pry-power_assert/version"
 require "pry-power_assert/power_assert-ext"
 
 module PryPowerAssert
-  class PowerAssertCommand < Pry::ClassCommand
-    match 'pa'
-    group 'Misc'
-    description ''
+  Pry::Commands.create_command('pa', '') do
 
     banner <<-'BANNER'
       Usage: pa RUBY_CODE
@@ -35,10 +32,8 @@ module PryPowerAssert
         result = pa.message_proc.()
       end
 
-      _pry_.pager.page result
+      output.puts result
     end
 
-  Pry::Commands.add_command(PowerAssertCommand)
   end
 end
-
