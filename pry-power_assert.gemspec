@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = PryPowerAssert::VERSION
   spec.authors       = ["yui-knk"]
   spec.email         = ["spiketeika@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = "Provides power assert support for Pry"
+  spec.description   = "Provides power assert support for Pry"
+  spec.homepage      = "https://github.com/yui-knk/pry-power_assert"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
