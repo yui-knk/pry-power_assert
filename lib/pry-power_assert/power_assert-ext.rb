@@ -3,7 +3,6 @@ require "power_assert"
 module PowerAssert
   class PryContext < Context
 
-    # remove path, lineno,
     # args line means assertion_proc_string
     def initialize(assertion_proc, assertion_method, line)
       @line = line
