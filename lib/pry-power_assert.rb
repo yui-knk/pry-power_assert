@@ -13,7 +13,15 @@ module PryPowerAssert
 
       The pa command show RUBY_CODE result with power_assert like format.
 
-      gist Rakefile --lines 5
+      [1] pry(main)> pa "0".class == "3".to_i.times.map {|i| i + 1 }.class
+      "0".class == "3".to_i.times.map {|i| i + 1 }.class
+          |     |      |    |     |                |
+          |     |      |    |     |                Array
+          |     |      |    |     [1, 2, 3]
+          |     |      |    #<Enumerator: 3:times>
+          |     |      3
+          |     false
+          String
     BANNER
 
     def process
