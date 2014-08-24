@@ -1,9 +1,7 @@
-# this is monkey patch for power_assert gem
 require "power_assert"
 
 module PowerAssert
-  public_constant :Context
-  class Context
+  class PryContext < Context
 
     # remove path, lineno,
     # args line means assertion_proc_string
@@ -39,10 +37,10 @@ module PowerAssert
       end
     end
   end
-  private_constant :Context
+  private_constant :PryContext
 
   def start_with_string(assertion_proc, line, assertion_method: nil)
-    yield Context.new(assertion_proc, assertion_method, line)
+    yield PryContext.new(assertion_proc, assertion_method, line)
   end
   module_function :start_with_string
 end
