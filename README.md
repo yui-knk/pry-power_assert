@@ -30,6 +30,8 @@ Type `pa RUBY_CODE`
 
 ```ruby
 [1] pry(main)> pa "0".class == "3".to_i.times.map {|i| i + 1 }.class
+result: false
+
 "0".class == "3".to_i.times.map {|i| i + 1 }.class
     |     |      |    |     |                |
     |     |      |    |     |                Array

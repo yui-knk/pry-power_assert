@@ -11,6 +11,8 @@ module PryPowerAssert
       The pa command show RUBY_CODE result with power_assert like format.
 
       [1] pry(main)> pa "0".class == "3".to_i.times.map {|i| i + 1 }.class
+      result: false
+
       "0".class == "3".to_i.times.map {|i| i + 1 }.class
           |     |      |    |     |                |
           |     |      |    |     |                Array
@@ -22,14 +24,14 @@ module PryPowerAssert
     BANNER
 
     def process
-      result = ""
+      result = "result: "
       code = arg_string
 
       proc = context[:target].eval "Proc.new {#{code}}"
 
       PowerAssert.start_with_string(proc, code, assertion_method: __method__) do |pa|
-        pa.yield
-        result = pa.message_proc.()
+        result << pa.yield.inspect << "\n\n"
+        result << pa.message_proc.()
       end
 
       output.puts result
