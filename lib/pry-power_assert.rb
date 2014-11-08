@@ -1,6 +1,6 @@
 require "pry"
+require "power_assert"
 require "pry-power_assert/version"
-require "pry-power_assert/power_assert-ext"
 
 module PryPowerAssert
   Pry::Commands.create_command('pa', '') do
@@ -25,11 +25,8 @@ module PryPowerAssert
 
     def process
       result = "result: "
-      code = arg_string
 
-      proc = context[:target].eval "Proc.new {#{code}}"
-
-      PowerAssert.start_with_string(proc, code, assertion_method: __method__) do |pa|
+      PowerAssert.start(arg_string, source_binding: context[:target]) do |pa|
         result << pa.yield.inspect << "\n\n"
         result << pa.message_proc.()
       end
